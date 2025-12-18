@@ -67,32 +67,8 @@ java -jar target/traffic-car-analyzer-1.0-SNAPSHOT-jar-with-dependencies.jar /Us
 ---
 
 ## 📊 Sample Output
-```
-========================================
-TRAFFIC DATA ANALYSIS REPORT
-========================================
+<img width="1429" height="596" alt="image" src="https://github.com/user-attachments/assets/8ca06828-40b3-4d3c-9e2f-ea6b0b2b838e" />
 
-Total cars: 337
-
-Daily totals:
-2021-12-01 179
-2021-12-05 81
-2021-12-08 134
-2021-12-09 4
-
-Top 3 half hours:
-2021-12-01T07:30:00 46
-2021-12-01T08:00:00 42
-2021-12-08T18:00:00 33
-
-1.5 hour period with least cars:
-2021-12-01T15:00:00 9
-2021-12-01T15:30:00 11
-2021-12-01T23:30:00 0
-(Total: 20 cars)
-
-========================================
-```
 
 ---
 
