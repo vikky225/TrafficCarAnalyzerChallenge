@@ -7,7 +7,7 @@ This repository contains a professional Java 21 solution for analyzing traffic c
 - **🚀 Production-ready**: Implements clean architecture, comprehensive testing, and robust error handling.
 - **⚙️ Modern Java 21**: Leverages modern Java features including Records, Streams, and advanced APIs.
 - **🔧 Simple setup**: Automated installation and configuration with a one-command setup.
-- **✅ Comprehensive testing**: 100+ test cases to ensure robustness and accuracy, including edge case coverage.
+- **✅ Comprehensive testing**: 25+ test cases to ensure robustness and accuracy, including edge case coverage.
 - **🚗 User-friendly**: Intuitive output, helpful error messages, and support for multiple sample datasets.
 
 ---
