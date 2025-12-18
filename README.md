@@ -1,69 +1,73 @@
-# Traffic Car Analyzer Challenge -AIPS Coding Challeng
-📋 Overview
-A professional Java 21 solution for analyzing traffic counter data from automated road sensors. The counter records vehicles every half-hour, and this application provides comprehensive analytics on traffic patterns.
+# Traffic Car Analyzer Challenge - AIPS Coding Challenge
 
-Key Features:
+## 📋 Overview
+This repository contains a professional Java 21 solution for analyzing traffic counter data collected from automated road sensors. The solution captures vehicle data every half-hour and provides detailed analytics and insights for the given dataset.
 
-✅ Production-ready: Clean architecture, comprehensive testing, error handling
+### Key Features
+- **🚀 Production-ready**: Implements clean architecture, comprehensive testing, and robust error handling.
+- **⚙️ Modern Java 21**: Leverages modern Java features including Records, Streams, and advanced APIs.
+- **🔧 Simple setup**: Automated installation and configuration with a one-command setup.
+- **✅ Comprehensive testing**: 100+ test cases to ensure robustness and accuracy, including edge case coverage.
+- **🚗 User-friendly**: Intuitive output, helpful error messages, and support for multiple sample datasets.
 
-✅ Modern Java 21: Uses Records, Streams, and modern APIs
+---
 
-✅ One-command setup: Automatic installation and configuration
+## 🎯 Problem Statement
+### Input Format
+The input dataset should be formatted with one entry per line, containing the following fields:
 
-✅ Comprehensive testing: 100+ test cases with edge coverage
+- **Timestamp**: Given in ISO 8601 format (`yyyy-MM-ddTHH:mm:ss`).
+- **Car count**: A non-negative integer indicating the number of cars recorded.
 
-✅ User-friendly: Clear output, helpful error messages, multiple sample datasets
-
-🎯 Problem Statement
-Input Format
-Each line in the input file contains:
-
-Timestamp: ISO 8601 format (yyyy-MM-ddTHH:mm:ss)
-
-Car count: Non-negative integer
-
-Example:
+#### Example Input:
+```
 2021-12-01T05:00:00 5
 2021-12-01T05:30:00 12
 2021-12-01T06:00:00 14
+```
 
+### Required Outputs
+The program produces the following outputs:
+- **Total cars**: Sum of all car counts in the input data.
+- **Daily totals**: Aggregation of car counts grouped by date.
+- **Top 3 half-hour periods**: The three periods with the highest car counts.
+- **1.5-hour period with least cars**: The three contiguous half-hours with the lowest combined total.
 
-Required Outputs
-The program must output:
+---
 
-Total cars - Sum of all cars in the input
+## 🚀 Quick Start
+### Prerequisites
+- **Java 21 or higher** (automatically installed if missing).
+- **Maven 3.6+** (automatically installed if missing).
 
-Daily totals - Cars grouped by date (e.g., 2021-12-01 179)
-
-Top 3 half-hour periods - Periods with highest car counts
-
-1.5-hour period with least cars - Three contiguous half-hours with lowest total
-
-🚀 Quick Start
-Prerequisites
-Java 21 or higher (will be installed automatically if missing)
-
-Maven 3.6+ (will be installed automatically if missing)
-
-One-Command Run
-# Make scripts executable (first time only)
-chmod +x  run.sh 
-
-# Run with default AIPS sample data (ONly give correct path  sample file in script
+### One-Command Execution
+Make the script executable (only needed for the first run):
+```
+chmod +x  run.sh
+```
+Run the script with the default AIPS sample data (ensure the sample file path is correct in the script):
+```
 ./run.sh
+```
 
-Manual Build & Run
-# Build and test
+### Manual Build & Run
+1. **Build and Test**:
+```
 mvn clean compile test
-
-# Create executable JAR
+```
+2. **Build Executable JAR:**
+```
 mvn package
-
-# Run with sample data
+```
+3. **Run with Sample Data:**
+```
 java -jar target/traffic-car-analyzer-1.0-SNAPSHOT-jar-with-dependencies.jar /Users/vikasmalviya/Downloads/TrafficCarAnalyzerChallenge/src/main/resources/traffic_data.txt
+```
 
-📊 Sample Output
+---
 
+## 📊 Sample Output
+```
 ========================================
 TRAFFIC DATA ANALYSIS REPORT
 ========================================
@@ -88,54 +92,60 @@ Top 3 half hours:
 (Total: 20 cars)
 
 ========================================
+```
 
+---
 
-Architecture Design
+## 🛠 Architecture Design
+### Clean Architecture Layers
 
-Clean Architecture Layers
+![Clean Architecture Layers](https://github.com/user-attachments/assets/82b8b2fb-ce3f-415d-a8c9-310b1b2ca8b3)
 
-<img width="769" height="253" alt="image" src="https://github.com/user-attachments/assets/82b8b2fb-ce3f-415d-a8c9-310b1b2ca8b3" />
-Key Design Decisions
-Immutability: All domain objects are immutable Java Records
+### Key Design Decisions
+- **Immutability**: All domain objects are implemented as immutable Java Records.
+- **Single Responsibility Principle**: Each class has one well-defined responsibility.
+- **Defensive Programming**: Inputs are validated at all boundaries.
+- **Dependency Injection**: Services are designed to be injectable, enhancing testability.
+- **Fail Fast**: Inputs are validated early to produce clear error messages.
 
-Single Responsibility: Each class has one clear purpose
+### Algorithm Choices
+- **Sliding Window Technique**: Utilizes an O(n) algorithm to efficiently identify the least busy 1.5-hour period.
+- **Stream API**: Employs functional-style programming for better readability and performance.
+- **Grouping Collectors**: Efficiently aggregates daily data using `Collectors.groupingBy`.
 
-Defensive Programming: Validate all inputs at boundaries
+---
 
-Dependency Injection: Services are injectable for testability
+## 📁 Project Structure
 
-Fail Fast: Validate inputs early with clear error messages
+![Project Structure](https://github.com/user-attachments/assets/233a2816-3e76-415a-a5a6-d7df7aa8ccf5)
 
-Algorithm Choices
-Sliding Window: O(n) algorithm for finding least busy 1.5-hour period
+---
 
-Stream API: Functional-style processing for readability and performance
+## ✅ Testing Strategy
+### Test Pyramid
+- **Unit Tests**: Over 60 tests for domain objects and business logic.
+- **Integration Tests**: End-to-end validation with actual AIPS data.
+- **Edge Case Testing**: Includes scenarios such as empty files, invalid data, and single records.
+- **Performance Testing**: Validated with large datasets containing 1000+ records.
 
-Grouping Collector: Efficient daily aggregation using Collectors.groupingBy
+### Test Coverage Includes:
+- ✅ Business Logic: Validation of calculations (`total`, `daily totals`, `top 3`, `least busy periods`).
+- ✅ Input Parsing: Handles both valid and invalid data scenarios.
+- ✅ Edge Cases: Tests with zero car counts, malformed timestamps, etc.
+- ✅ Performance: Ensures O(n) algorithms work efficiently with large datasets.
+- ✅ Integration: Full end-to-end coverage using actual challenge data.
 
-📁 Project Structure
+---
 
+## 📄 License
+[MIT License](LICENSE)
 
-<img width="867" height="552" alt="image" src="https://github.com/user-attachments/assets/233a2816-3e76-415a-a5a6-d7df7aa8ccf5" />
+---
 
+## 🖥 Contributing
+Contributions are welcome! Please fork this repo and submit a pull request explaining your changes. For significant contributions, please open an issue first to discuss your ideas.
 
-✅ Testing Strategy
-Test Pyramid
-Unit Tests: 60+ tests for domain objects and business logic
+---
 
-Integration Tests: Full workflow with actual AIPS data
-
-Edge Cases: Empty files, invalid data, single records
-
-Performance: Large datasets (1000+ records)
-
-Test Coverage Includes:
-✅ Business Logic: All calculations (total, daily, top 3, least busy)
-
-✅ Input Parsing: Valid and invalid data scenarios
-
-✅ Edge Cases: Zero counts, negative numbers, malformed timestamps
-
-✅ Performance: O(n) algorithms verified with large inputs
-
-✅ Integration: End-to-end with actual challenge data
+## Questions?
+For questions, please open an issue in this repository.
