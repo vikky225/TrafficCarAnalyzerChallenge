@@ -94,17 +94,7 @@ Architecture Design
 
 Clean Architecture Layers
 
-┌─────────────────────────────────────────┐
-│            TrafficAnalyzer              │ ← Main entry point (orchestration)
-├─────────────────────────────────────────┤
-│          ReportFormatter                │ ← Presentation layer
-├─────────────────────────────────────────┤
-│    TrafficAnalyzerService               │ ← Business logic
-│        TrafficDataParser                │ ← Input processing
-├─────────────────────────────────────────┤
-│    TrafficRecord   DailyTotal           │ ← Domain models (immutable)
-└─────────────────────────────────────────┘
-
+<img width="769" height="253" alt="image" src="https://github.com/user-attachments/assets/82b8b2fb-ce3f-415d-a8c9-310b1b2ca8b3" />
 Key Design Decisions
 Immutability: All domain objects are immutable Java Records
 
@@ -126,28 +116,8 @@ Grouping Collector: Efficient daily aggregation using Collectors.groupingBy
 📁 Project Structure
 
 
-traffic-car-analyzer/
-├── src/
-│   ├── main/
-│   │   ├── java/com/aips/traffic/
-│   │   │   ├── domain/           # Immutable data models (TrafficRecord, DailyTotal)
-│   │   │   ├── service/          # Business logic (TrafficDataParser, TrafficAnalyzerService)
-│   │   │   ├── output/           # Presentation layer (ReportFormatter)
-│   │   │   └── TrafficCarAnalyzerChallenge.java  # Main entry point
-│   │   └── resources/
-│   │       └── traffic_data.txt  # Default input file
-│   └── test/
-│       ├── java/com/aips/traffic/
-│       │   ├── domain/           # Unit tests for models
-│       │   ├── service/          # Unit tests for services
-│       │   └── integration/      # End-to-end tests
-│       └── resources/            # Test resources (if any)
-├── target/                       # Maven build output (generated)
-├── pom.xml                       # Maven configuration
-├── run.sh                        # Run application script
-├── test.sh                       # Test runner script
-├── run.bat                       # Windows batch script
-└── README.md                     # Project documentation
+<img width="867" height="552" alt="image" src="https://github.com/user-attachments/assets/233a2816-3e76-415a-a5a6-d7df7aa8ccf5" />
+
 
 ✅ Testing Strategy
 Test Pyramid
