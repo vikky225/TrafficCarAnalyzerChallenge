@@ -1,125 +1,167 @@
-# Traffic Car Analyzer Challenge
+# Traffic Car Analyzer Challenge -AIPS Coding Challeng
+📋 Overview
+A professional Java 21 solution for analyzing traffic counter data from automated road sensors. The counter records vehicles every half-hour, and this application provides comprehensive analytics on traffic patterns.
 
-## Overview
-This project implements a traffic data analysis tool for an automated traffic counter.
-The counter records the number of cars passing every half hour.  
-The program reads this data from a file and produces summary analytics.
+Key Features:
 
-The solution is written in **Java 21**, uses **JUnit 5** for testing, and follows
-clean, production-ready coding practices.
+✅ Production-ready: Clean architecture, comprehensive testing, error handling
 
----
+✅ Modern Java 21: Uses Records, Streams, and modern APIs
 
-## Problem Statement
-Given an input file where each line contains:
-- An ISO-8601 timestamp (`yyyy-MM-ddTHH:mm:ss`) representing the start of a half-hour window
-- The number of cars counted in that half hour
+✅ One-command setup: Automatic installation and configuration
 
-The program outputs:
-1. Total number of cars seen
-2. Daily totals (cars per calendar day)
-3. Top 3 half-hour periods with the most cars
-4. The **least busy 1.5-hour period** (3 contiguous half-hour records with the lowest total)
+✅ Comprehensive testing: 100+ test cases with edge coverage
 
----
+✅ User-friendly: Clear output, helpful error messages, multiple sample datasets
 
-## Example Input
-# Traffic Car Analyzer Challenge
+🎯 Problem Statement
+Input Format
+Each line in the input file contains:
 
-## Overview
-This project implements a traffic data analysis tool for an automated traffic counter.
-The counter records the number of cars passing every half hour.  
-The program reads this data from a file and produces summary analytics.
+Timestamp: ISO 8601 format (yyyy-MM-ddTHH:mm:ss)
 
-The solution is written in **Java 21**, uses **JUnit 5** for testing, and follows
-clean, production-ready coding practices.
+Car count: Non-negative integer
 
----
-
-## Problem Statement
-Given an input file where each line contains:
-- An ISO-8601 timestamp (`yyyy-MM-ddTHH:mm:ss`) representing the start of a half-hour window
-- The number of cars counted in that half hour
-
-The program outputs:
-1. Total number of cars seen
-2. Daily totals (cars per calendar day)
-3. Top 3 half-hour periods with the most cars
-4. The **least busy 1.5-hour period** (3 contiguous half-hour records with the lowest total)
-
----
-
-## Example Input
-# Traffic Car Analyzer Challenge
-
-## Overview
-This project implements a traffic data analysis tool for an automated traffic counter.
-The counter records the number of cars passing every half hour.  
-The program reads this data from a file and produces summary analytics.
-
-The solution is written in **Java 21**, uses **JUnit 5** for testing, and follows
-clean, production-ready coding practices.
-
----
-
-## Problem Statement
-Given an input file where each line contains:
-- An ISO-8601 timestamp (`yyyy-MM-ddTHH:mm:ss`) representing the start of a half-hour window
-- The number of cars counted in that half hour
-
-The program outputs:
-1. Total number of cars seen
-2. Daily totals (cars per calendar day)
-3. Top 3 half-hour periods with the most cars
-4. The **least busy 1.5-hour period** (3 contiguous half-hour records with the lowest total)
-
----
-
-## Example Input
+Example:
 2021-12-01T05:00:00 5
 2021-12-01T05:30:00 12
 2021-12-01T06:00:00 14
 
 
----
+Required Outputs
+The program must output:
 
-## Design Decisions
-- **Java 21 records** are used for immutable domain objects
-- A **sliding window algorithm** is used to compute the least busy period efficiently
-- Records are sorted chronologically before analysis
-- Tests validate business behavior rather than implementation details
+Total cars - Sum of all cars in the input
 
----
+Daily totals - Cars grouped by date (e.g., 2021-12-01 179)
 
-## How to Build and Run
+Top 3 half-hour periods - Periods with highest car counts
 
-### Build & Test
-```bash
-mvn clean test
+1.5-hour period with least cars - Three contiguous half-hours with lowest total
 
-Run the Application
+🚀 Quick Start
+Prerequisites
+Java 21 or higher (will be installed automatically if missing)
 
-java -jar target/traffic-car-analyzer.jar <input-file>
+Maven 3.6+ (will be installed automatically if missing)
 
-Project Structure 
-src
- ├── main
- │   └── java
- │       └── com.aips.traffic
- │           ├── domain
- │           ├── service
- │           ├── output
- │           └── TrafficCarAnalyzerChallenge.java
- └── test
-     └── java
-         └── com.aips.traffic
+One-Command Run
+# Make scripts executable (first time only)
+chmod +x  run.sh 
 
-Technologies Used
+# Run with default AIPS sample data (ONly give correct path  sample file in script
+./run.sh
 
-Java 21
+Manual Build & Run
+# Build and test
+mvn clean compile test
 
-Maven
+# Create executable JAR
+mvn package
 
-JUnit 5
+# Run with sample data
+java -jar target/traffic-car-analyzer-1.0-SNAPSHOT-jar-with-dependencies.jar /Users/vikasmalviya/Downloads/TrafficCarAnalyzerChallenge/src/main/resources/traffic_data.txt
 
-AssertJ
+📊 Sample Output
+
+========================================
+TRAFFIC DATA ANALYSIS REPORT
+========================================
+
+Total cars: 337
+
+Daily totals:
+2021-12-01 179
+2021-12-05 81
+2021-12-08 134
+2021-12-09 4
+
+Top 3 half hours:
+2021-12-01T07:30:00 46
+2021-12-01T08:00:00 42
+2021-12-08T18:00:00 33
+
+1.5 hour period with least cars:
+2021-12-01T15:00:00 9
+2021-12-01T15:30:00 11
+2021-12-01T23:30:00 0
+(Total: 20 cars)
+
+========================================
+
+
+Architecture Design
+
+Clean Architecture Layers
+
+┌─────────────────────────────────────────┐
+│            TrafficAnalyzer              │ ← Main entry point (orchestration)
+├─────────────────────────────────────────┤
+│          ReportFormatter                │ ← Presentation layer
+├─────────────────────────────────────────┤
+│    TrafficAnalyzerService               │ ← Business logic
+│        TrafficDataParser                │ ← Input processing
+├─────────────────────────────────────────┤
+│    TrafficRecord   DailyTotal           │ ← Domain models (immutable)
+└─────────────────────────────────────────┘
+
+Key Design Decisions
+Immutability: All domain objects are immutable Java Records
+
+Single Responsibility: Each class has one clear purpose
+
+Defensive Programming: Validate all inputs at boundaries
+
+Dependency Injection: Services are injectable for testability
+
+Fail Fast: Validate inputs early with clear error messages
+
+Algorithm Choices
+Sliding Window: O(n) algorithm for finding least busy 1.5-hour period
+
+Stream API: Functional-style processing for readability and performance
+
+Grouping Collector: Efficient daily aggregation using Collectors.groupingBy
+
+📁 Project Structure
+traffic-car-analyzer/
+├── src/
+│   ├── main/
+│   │   ├── java/com/aips/traffic/
+│   │   │   ├── domain/           # Immutable data models (TrafficRecord, DailyTotal)
+│   │   │   ├── service/          # Business logic (TrafficDataParser, TrafficAnalyzerService)
+│   │   │   ├── output/           # Presentation layer (ReportFormatter)
+│   │   │   └── TrafficCarAnalyzerChallenge.java  # Main entry point
+│   │   └── resources/
+│   │       └── traffic_data.txt  # Default input file
+│   └── test/
+│       ├── java/com/aips/traffic/
+│       │   ├── domain/           # Unit tests for models
+│       │   ├── service/          # Unit tests for services
+│       │   └── integration/      # End-to-end tests
+│       └── resources/            # Test resources (if any)
+├── target/                       # Maven build output (generated)
+├── pom.xml                       # Maven configuration
+├── run.sh                        # Run application script
+└── README.md                     # Project documentation
+
+✅ Testing Strategy
+Test Pyramid
+Unit Tests: 60+ tests for domain objects and business logic
+
+Integration Tests: Full workflow with actual AIPS data
+
+Edge Cases: Empty files, invalid data, single records
+
+Performance: Large datasets (1000+ records)
+
+Test Coverage Includes:
+✅ Business Logic: All calculations (total, daily, top 3, least busy)
+
+✅ Input Parsing: Valid and invalid data scenarios
+
+✅ Edge Cases: Zero counts, negative numbers, malformed timestamps
+
+✅ Performance: O(n) algorithms verified with large inputs
+
+✅ Integration: End-to-end with actual challenge data
