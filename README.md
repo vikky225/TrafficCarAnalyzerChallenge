@@ -135,7 +135,7 @@ java -jar target/traffic-car-analyzer-1.0-SNAPSHOT-jar-with-dependencies.jar /Us
 ---
 
 ## 📄 License
-[MIT License](LICENSE)
+Vikas Malviya
 
 ---
 
