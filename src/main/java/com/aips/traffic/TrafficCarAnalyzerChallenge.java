@@ -1,5 +1,6 @@
 package com.aips.traffic;
 
+import com.aips.traffic.domain.DailyTotal;
 import com.aips.traffic.domain.TrafficRecord;
 import com.aips.traffic.output.ReportGenerator;
 import com.aips.traffic.service.TrafficAnalyzerService;
@@ -8,12 +9,14 @@ import com.aips.traffic.service.TrafficDataParser;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
-public class TrafficAnalyzer {
+public class TrafficCarAnalyzerChallenge {
 
-    private static final Logger LOGGER = Logger.getLogger(TrafficAnalyzer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TrafficCarAnalyzerChallenge.class.getName());
 
     public static void main(String[] args) {
         try {
@@ -37,7 +40,12 @@ public class TrafficAnalyzer {
             TrafficAnalyzerService analyzer = new TrafficAnalyzerService(records);
 
             int totalCars = analyzer.calculateTotalCars();
-            var dailyTotals = analyzer.calculateDailyTotals();
+            var dailyTotalsMap = analyzer.calculateDailyTotals();
+            var dailyTotals = dailyTotalsMap.entrySet().stream()
+                    .sorted(Map.Entry.comparingByKey())
+                    .map(entry -> new DailyTotal(entry.getKey(), entry.getValue()))
+                    .toList();
+
             var topPeriods = analyzer.findTopPeriods(3);
             var leastBusyPeriod = analyzer.findLeastBusyPeriod(3);
 
@@ -65,12 +73,12 @@ public class TrafficAnalyzer {
         System.out.println("""
             Traffic Data Analyzer
             =====================
-            
+
             Usage: java TrafficAnalyzer <input-file>
-            
+
             Example:
               java TrafficAnalyzer traffic_data.txt
-            
+
             Input file format (ISO 8601 timestamp + car count):
               2024-01-01T00:00:00 5
               2024-01-01T00:30:00 10
