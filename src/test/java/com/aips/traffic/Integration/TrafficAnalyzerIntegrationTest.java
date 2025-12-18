@@ -1,5 +1,6 @@
-package com.aips.traffic;
+package com.aips.traffic.Integration;
 
+import com.aips.traffic.TrafficCarAnalyzerChallenge;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 

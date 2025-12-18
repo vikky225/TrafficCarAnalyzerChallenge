@@ -124,6 +124,8 @@ Stream API: Functional-style processing for readability and performance
 Grouping Collector: Efficient daily aggregation using Collectors.groupingBy
 
 📁 Project Structure
+
+
 traffic-car-analyzer/
 ├── src/
 │   ├── main/
@@ -143,6 +145,8 @@ traffic-car-analyzer/
 ├── target/                       # Maven build output (generated)
 ├── pom.xml                       # Maven configuration
 ├── run.sh                        # Run application script
+├── test.sh                       # Test runner script
+├── run.bat                       # Windows batch script
 └── README.md                     # Project documentation
 
 ✅ Testing Strategy
