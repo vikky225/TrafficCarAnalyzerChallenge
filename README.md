@@ -126,7 +126,7 @@ Top 3 half hours:
 - **Unit Tests**: Over 60 tests for domain objects and business logic.
 - **Integration Tests**: End-to-end validation with actual AIPS data.
 - **Edge Case Testing**: Includes scenarios such as empty files, invalid data, and single records.
-- **Performance Testing**: Validated with large datasets containing 1000+ records.
+
 
 ### Test Coverage Includes:
 - ✅ Business Logic: Validation of calculations (`total`, `daily totals`, `top 3`, `least busy periods`).
