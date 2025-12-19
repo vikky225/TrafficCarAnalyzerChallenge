@@ -90,6 +90,9 @@ java -jar target/traffic-car-analyzer-1.0-SNAPSHOT-jar-with-dependencies.jar /Us
 ## 📊 Sample Output
 <img width="1429" height="596" alt="image" src="https://github.com/user-attachments/assets/8ca06828-40b3-4d3c-9e2f-ea6b0b2b838e" />
 
+## Video Explaination
+https://drive.google.com/file/d/1s689DdaUFNNJHZiRXtw5vyfPxHkwrgwR/view
+
 
 ---
 
